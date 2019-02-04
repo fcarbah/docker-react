@@ -1,0 +1,11 @@
+From node:alpine
+
+Workdir /var/www/html
+
+Copy package.json .
+
+Run npm install
+
+Copy . .
+
+CMD ["npm","run","start"]
