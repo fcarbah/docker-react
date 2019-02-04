@@ -1,0 +1,11 @@
+#travis ci 
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t fcarbah/docker-react -f Dockerfile.dev .
+
+script:
+  #to end test suite  and exit to command line add the option: -- --coverage
+  - docker run fcarbah/docker-react npm run test -- --coverage
