@@ -9,3 +9,18 @@ before_install:
 script:
   #to end test suite  and exit to command line add the option: -- --coverage
   - docker run fcarbah/docker-react npm run test -- --coverage
+
+#deploy to hosting -- we are using amazon elasticbeanstalk
+deploy:
+  #all of these come from amazon aws elastic beanstalk
+  provider: elasticbeanstalk
+  region: "us-west-2"
+  app: "docker-react"
+  env: "Docker-env"
+  bucket_name: "elasticbeanstalk-us-west-2-184721162578"
+  bucket_path: "docker-react" #same as app
+  on:
+    branch: master
+  access_key_id: $aws-access-key
+  secret_access_key:
+    secure: "$aws-secret-key"
